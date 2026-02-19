@@ -2,78 +2,89 @@ import MapaPatios from "@/components/MapaPatios";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       {/* ── Header ─────────────────────────────────────────────────────────── */}
-      <header className="bg-navy-deep text-primary-foreground shadow-md">
-        <div className="container mx-auto px-4 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            {/* Logo mark */}
-            <div className="w-10 h-10 rounded-xl bg-orange flex items-center justify-center flex-shrink-0">
-              <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-white" stroke="currentColor" strokeWidth={2}>
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                <circle cx="12" cy="10" r="3" />
+      <header style={{ background: "hsl(var(--navy-deep))" }} className="shadow-lg">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2.5">
+            <div
+              className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+              style={{ background: "hsl(var(--orange))" }}
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
               </svg>
             </div>
             <div>
-              <h1 className="text-xl font-extrabold tracking-tight leading-none">
+              <h1 className="text-base sm:text-lg font-extrabold text-white tracking-tight leading-none">
                 Pátios de Apreensão
               </h1>
-              <p className="text-xs text-primary-foreground/70 mt-0.5">
-                Localize o pátio mais próximo de você
+              <p className="text-[10px] sm:text-xs text-white/60 mt-0.5">
+                Localize o pátio mais próximo
               </p>
             </div>
           </div>
 
-          {/* Badge de pátios disponíveis */}
-          <div className="flex items-center gap-2 bg-white/10 rounded-full px-3 py-1.5 text-xs font-medium">
-            <span className="w-2 h-2 rounded-full bg-orange inline-block animate-pulse" />
-            5 pátios disponíveis
+          <div
+            className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium text-white/90"
+            style={{ background: "hsl(var(--orange) / 0.2)", border: "1px solid hsl(var(--orange) / 0.3)" }}
+          >
+            <span
+              className="w-1.5 h-1.5 rounded-full animate-pulse"
+              style={{ background: "hsl(var(--orange))" }}
+            />
+            5 pátios ativos
           </div>
         </div>
       </header>
 
-      {/* ── Hero / Intro ────────────────────────────────────────────────────── */}
-      <div className="bg-gradient-to-b from-navy/5 to-background border-b border-border">
-        <div className="container mx-auto px-4 py-8 text-center">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground mb-2">
-            Encontre o Pátio{" "}
-            <span className="text-accent">mais próximo</span> de você
-          </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
-            Digite seu CEP ou endereço para localizar pátios de apreensão, ver distâncias e
-            calcular a rota com um clique.
-          </p>
-        </div>
+      {/* ── Hero compacto ─────────────────────────────────────────────────── */}
+      <div
+        className="py-5 px-4 text-center"
+        style={{
+          background: "linear-gradient(180deg, hsl(var(--navy-deep) / 0.06) 0%, transparent 100%)",
+          borderBottom: "1px solid hsl(var(--border))",
+        }}
+      >
+        <h2 className="text-xl sm:text-2xl font-extrabold text-foreground">
+          Encontre o Pátio{" "}
+          <span style={{ color: "hsl(var(--orange))" }}>mais próximo</span>
+        </h2>
+        <p className="text-muted-foreground text-xs sm:text-sm mt-1 max-w-sm mx-auto">
+          Permita sua localização e veja a rota até o pátio em 1 clique.
+        </p>
       </div>
 
-      {/* ── Mapa principal ──────────────────────────────────────────────────── */}
-      <main className="container mx-auto px-4 py-6">
+      {/* ── Mapa ──────────────────────────────────────────────────────────── */}
+      <main className="flex-1 container mx-auto px-3 sm:px-4 py-4">
         <MapaPatios />
       </main>
 
-      {/* ── Aviso sobre API Key ─────────────────────────────────────────────── */}
-      <div className="container mx-auto px-4 pb-6">
-        <div className="rounded-xl border border-orange/30 bg-orange/5 p-4 flex items-start gap-3">
-          <svg className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <circle cx="12" cy="12" r="10" />
-            <line x1="12" y1="8" x2="12" y2="12" />
-            <line x1="12" y1="16" x2="12.01" y2="16" />
+      {/* ── Aviso API ─────────────────────────────────────────────────────── */}
+      <div className="container mx-auto px-3 sm:px-4 pb-4">
+        <div
+          className="rounded-xl p-3 flex items-start gap-2.5 text-xs"
+          style={{
+            background: "hsl(var(--orange) / 0.06)",
+            border: "1px solid hsl(var(--orange) / 0.25)",
+          }}
+        >
+          <svg className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "hsl(var(--orange))" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
           </svg>
-          <div className="text-sm">
-            <p className="font-semibold text-foreground">Configure sua Chave da Google Maps API</p>
-            <p className="text-muted-foreground mt-1">
-              Crie um arquivo <code className="bg-muted px-1 py-0.5 rounded text-xs">.env</code> na raiz do projeto e adicione:{" "}
-              <code className="bg-muted px-1 py-0.5 rounded text-xs">VITE_GOOGLE_MAPS_API_KEY=sua_chave_aqui</code>.
-              Ative no Google Cloud Console: <strong>Maps JS API</strong>, <strong>Geocoding API</strong> e <strong>Directions API</strong>.
-            </p>
-          </div>
+          <span className="text-muted-foreground leading-relaxed">
+            <strong className="text-foreground">Configure a API Key:</strong> crie{" "}
+            <code className="bg-muted px-1 rounded">.env</code> com{" "}
+            <code className="bg-muted px-1 rounded">VITE_GOOGLE_MAPS_API_KEY=sua_chave</code>
+            {" "}e ative Maps JS, Geocoding e Directions no Google Cloud Console.
+          </span>
         </div>
       </div>
 
       {/* ── Footer ─────────────────────────────────────────────────────────── */}
-      <footer className="border-t border-border bg-card mt-4">
-        <div className="container mx-auto px-4 py-4 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Pátios de Apreensão — Todos os direitos reservados
+      <footer className="border-t border-border bg-card">
+        <div className="container mx-auto px-4 py-3 text-center text-xs text-muted-foreground">
+          © {new Date().getFullYear()} Pátios de Apreensão
         </div>
       </footer>
     </div>
